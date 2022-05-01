@@ -2,6 +2,7 @@ import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import TheHeader from "./components/TheHeader";
+import TheFooter from "./components/TheFooter";
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -40,6 +41,7 @@ const App = () => {
           </a>
         </p>
       </header>
+      <TheFooter />
     </div>
   )
 }
