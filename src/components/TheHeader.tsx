@@ -1,6 +1,6 @@
 const TheHeader = () => {
     return (
-        <header className="header">
+        <header className="header border border-solid border-black">
             Crypto-Calculator
         </header>
     )
