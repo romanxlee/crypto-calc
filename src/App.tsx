@@ -25,22 +25,26 @@ const App = () => {
   const [secondInput, changeSecond] = useState(firstInput * rate)
 
   return (
-    <div className="App min-h-screen flex flex-col justify-between">
+    <div className="App min-h-screen flex flex-col justify-between bg-[#6e47ff] text-amber-400 font-mono">
       <TheHeader />
-      <Currency current={current} />
-      <h1>1 {current} is {rate} USD</h1>
-        <input className="text-center" type="number" value={firstInput} onInput={
-            e => {
-            changeFirst(e.target.value)
-            changeSecond(e.target.value * rate)
-        }}
-        />
-        <input className="text-center" type="number" value={secondInput} onInput={
-            e => {
-            changeSecond(e.target.value)
-            changeFirst(e.target.value / rate)
-        }}
-        />
+      <div className="flex w-3/4 my-0 mx-auto">
+        <Currency current={current} rate={rate} />
+        <div className="flex flex-col justify-between items-center w-full">
+            <p>Enter your amount:</p>
+            <input className="text-center w-1/2" type="number" value={firstInput} onInput={
+                e => {
+                    changeFirst(e.target.value)
+                    changeSecond(e.target.value * rate)
+                }}
+            />
+            <input className="text-center w-1/2" type="number" value={secondInput} onInput={
+                e => {
+                    changeSecond(e.target.value)
+                    changeFirst(e.target.value / rate)
+                }}
+            />
+        </div>
+      </div>
       <CurrencyPicker setCurrency={setCurrency} />
       <TheFooter />
     </div>

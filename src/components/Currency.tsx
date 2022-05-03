@@ -1,8 +1,10 @@
-const Currency = ({current}: {current: string}) => {
+const Currency = ({current, rate}: {current: string, rate: number}) => {
     return (
-        <div className="border border-solid border-black">
+        <div className="w-full">
             <h3>Current currency: </h3>
             <p>{current}</p>
+            <p>Exchange rate is:</p>
+            <p>1 {current} is {rate} USD</p>
         </div>
     )
 }
