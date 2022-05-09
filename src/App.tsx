@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import TheHeader from "./components/TheHeader";
 import TheFooter from "./components/TheFooter";
@@ -7,22 +7,26 @@ import CurrencyPicker from "./components/CurrencyPicker";
 
 const App = () => {
   const [current, setCurrent] = useState('BTC')
+
+  const [rate, setRate] = useState(0)
+
   const setCurrency = (currency: string) => {
     setCurrent(currency)
-    getRate()
-  }
-
-  const [rate, setRate] = useState(10)
-
-  const getRate = () => {
-    fetch(`https://rest.coinapi.io/v1/exchangerate/${current}/USD?apikey=3A8F1902-F999-4BE8-9747-96C370691643`)
+    fetch(`https://rest.coinapi.io/v1/exchangerate/${currency}/USD?apikey=3A8F1902-F999-4BE8-9747-96C370691643`)
         .then((res) => res.json())
         // .then((res) => console.log(res))
-        .then((res) => setRate(res.rate.toFixed(2)))
+        .then((res) => {
+            setRate(res.rate.toFixed(2))
+        })
   }
 
-  const [firstInput, changeFirst] = useState(1)
+  const [firstInput, changeFirst] = useState(0)
   const [secondInput, changeSecond] = useState(firstInput * rate)
+
+  useEffect(() => {
+      // setRate(100)
+      setCurrency(current)
+  }, [])
 
   return (
     <div className="App min-h-screen flex flex-col justify-between bg-[#6e47ff] text-amber-400 font-mono">
