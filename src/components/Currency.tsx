@@ -1,6 +1,6 @@
 const Currency = ({current, rate}: {current: string, rate: number}) => {
     return (
-        <div className="w-full">
+        <div className="w-full mb-5">
             <h3>Current currency: </h3>
             <p>{current}</p>
             <p>Exchange rate is:</p>
