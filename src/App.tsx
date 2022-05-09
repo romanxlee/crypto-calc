@@ -14,7 +14,6 @@ const App = () => {
     setCurrent(currency)
     fetch(`https://rest.coinapi.io/v1/exchangerate/${currency}/USD?apikey=3A8F1902-F999-4BE8-9747-96C370691643`)
         .then((res) => res.json())
-        // .then((res) => console.log(res))
         .then((res) => {
             setRate(res.rate.toFixed(2))
         })
@@ -24,8 +23,7 @@ const App = () => {
   const [secondInput, changeSecond] = useState(firstInput * rate)
 
   useEffect(() => {
-      setRate(100)
-      // setCurrency(current)
+      setCurrency(current)
   }, [])
 
   return (
